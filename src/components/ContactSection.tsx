@@ -6,26 +6,13 @@ import { useToast } from "@/hooks/use-toast";
 
 const ContactSection = () => {
   const { toast } = useToast();
-
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [isTyping, setIsTyping] = useState(false);
-  const [banana, setBanana] = useState(false);
 
-  // 🐒 typing animation trigger
-  const handleTyping = () => {
-    setIsTyping(true);
-    setTimeout(() => setIsTyping(false), 600);
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     const subject = `Message from ${form.name}`;
     const body = `Name: ${form.name}\nEmail: ${form.email}\nMessage: ${form.message}`;
-
-    // 🍌 banana throw trigger
-    setBanana(true);
-    setTimeout(() => setBanana(false), 1000);
 
     window.location.href = `mailto:faisal.alam1588@gmail.com?subject=${encodeURIComponent(
       subject
@@ -44,7 +31,6 @@ const ContactSection = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px]" />
 
       <div className="max-w-6xl mx-auto relative z-10">
-        
         <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-4">
           Get In <span className="gradient-text">Touch</span>
         </h2>
@@ -55,31 +41,12 @@ const ContactSection = () => {
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           
-          {/* ================= FORM ================= */}
-          <form
-            onSubmit={handleSubmit}
-            className="glass-card p-8 space-y-5 relative overflow-hidden"
-          >
-
-            {/* 🐒 MONKEY */}
-            <div
-              className={`absolute -top-6 right-4 text-3xl ${
-                isTyping ? "monkey-jump" : "monkey-idle"
-              }`}
-            >
-              🐒
-            </div>
-
-            {/* 🍌 BANANA */}
-            {banana && <div className="banana top-10 left-10">🍌</div>}
-
+          {/* FORM */}
+          <form onSubmit={handleSubmit} className="glass-card p-8 space-y-5">
             <Input
               placeholder="Your Name"
               value={form.name}
-              onChange={(e) => {
-                setForm({ ...form, name: e.target.value });
-                handleTyping();
-              }}
+              onChange={(e) => setForm({ ...form, name: e.target.value })}
               required
               className="bg-muted/50 border-glass-border focus:border-primary"
             />
@@ -88,10 +55,7 @@ const ContactSection = () => {
               type="email"
               placeholder="Your Email"
               value={form.email}
-              onChange={(e) => {
-                setForm({ ...form, email: e.target.value });
-                handleTyping();
-              }}
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
               required
               className="bg-muted/50 border-glass-border focus:border-primary"
             />
@@ -100,10 +64,7 @@ const ContactSection = () => {
               placeholder="Your Message"
               rows={5}
               value={form.message}
-              onChange={(e) => {
-                setForm({ ...form, message: e.target.value });
-                handleTyping();
-              }}
+              onChange={(e) => setForm({ ...form, message: e.target.value })}
               required
               className="bg-muted/50 border-glass-border focus:border-primary resize-none"
             />
@@ -117,7 +78,7 @@ const ContactSection = () => {
             </button>
           </form>
 
-          {/* ================= CONTACT INFO ================= */}
+          {/* CONTACT INFO */}
           <div className="space-y-6 flex flex-col justify-center">
             {[
               {
@@ -137,7 +98,7 @@ const ContactSection = () => {
                 className="glass-card p-5 flex items-center gap-4 group hover:scale-[1.03] transition-all duration-300"
               >
                 {/* ICON */}
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/20 group-hover:shadow-[0_0_20px_rgba(0,255,150,0.4)]">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/20 group-hover:shadow-[0_0_20px_rgba(0,255,150,0.4)]">
                   <item.icon size={20} className="text-primary" />
                 </div>
 
