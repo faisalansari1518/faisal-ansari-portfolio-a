@@ -37,10 +37,12 @@ const SkillsSection = () => {
   return (
     <section id="skills" className="py-20 px-4 relative">
       <div className="absolute top-0 right-0 w-80 h-80 bg-accent/10 rounded-full blur-[100px]" />
+
       <div className="max-w-6xl mx-auto relative z-10">
         <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-4">
           Technical <span className="gradient-text">Skills</span>
         </h2>
+
         <p className="text-muted-foreground text-center max-w-xl mx-auto mb-12">
           Tools and technologies I use to deliver data-driven solutions.
         </p>
@@ -49,19 +51,29 @@ const SkillsSection = () => {
           {skills.map((skill, idx) => (
             <div
               key={skill.name}
-              className="glass-card p-6 group hover:border-primary/40 transition-all duration-300 hover:neon-glow"
+              className="glass-card p-6 group transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 hover:shadow-2xl hover:border-primary/40 hover:neon-glow cursor-pointer"
               style={{ animationDelay: `${idx * 0.1}s` }}
             >
+              {/* ICON */}
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                  <skill.icon size={24} className="text-primary" />
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center transition-all duration-300 group-hover:bg-primary/20 group-hover:scale-110">
+                  <skill.icon size={24} className="text-primary transition-transform duration-300 group-hover:rotate-6" />
                 </div>
-                <h3 className="font-heading font-semibold text-lg">{skill.name}</h3>
+
+                <h3 className="font-heading font-semibold text-lg group-hover:text-primary transition-colors">
+                  {skill.name}
+                </h3>
               </div>
-              <p className="text-sm text-muted-foreground mb-4">{skill.details}</p>
+
+              {/* DETAILS */}
+              <p className="text-sm text-muted-foreground mb-4">
+                {skill.details}
+              </p>
+
+              {/* PROGRESS BAR */}
               <div className="w-full h-1.5 rounded-full bg-muted overflow-hidden">
                 <div
-                  className="h-full rounded-full bg-gradient-to-r from-primary to-accent transition-all duration-1000"
+                  className="h-full rounded-full bg-gradient-to-r from-primary to-accent transition-all duration-1000 group-hover:brightness-125"
                   style={{ width: `${skill.level}%` }}
                 />
               </div>
