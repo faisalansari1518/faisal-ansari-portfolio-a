@@ -8,16 +8,16 @@ const education = [
     details: "2nd Year • Focus on ML & AI/Data Science",
   },
   {
-    period: "2022 – 2024",
+    period: "2024",
     title: "12th Science",
     institution: "Radcliffe School",
     details: "Completed Higher Secondary Education",
   },
   {
     period: "2022",
-    title: "10th (SSC)",
+    title: "10th",
     institution: "Radcliffe School",
-    details: "Secondary School Certificate",
+    details: "Completed Secondary School Certificate",
   },
 ];
 
