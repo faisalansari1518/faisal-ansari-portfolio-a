@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from "react";
 import { ExternalLink } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
@@ -17,7 +16,7 @@ const projects = [
       "Analyzed hospital ER data using Excel and SQL to create pivot reports on patient wait times and department utilization.",
     tools: ["Excel", "SQL", "Pivot Tables"],
     color: "from-accent/20 to-primary/10",
-    link: "https://onedrive.live.com/:x:/g/personal/f88d2d80c413f6dd/IQD1I-gq5kkYTrjHDQI6hRjtAU-ieiqRep5TWensJZ7AxwU",
+    link: "https://onedrive.live.com/:x:/g/personal/f88d2d80c413f6dd/IQD1I-gq5kkYTrjHDQI6hRjtAU-ieiqRep5TWensJZ7AxwU?rtime=GAXyQvWV3kg&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3gvYy9mODhkMmQ4MGM0MTNmNmRkL0lRRDFJLWdxNWtrWVRyakhEUUk2aFJqdEFVLWllaXFSZXA1VFdlbnNKWjdBeHdVP2U9NHZUNnNW",
   },
   {
     title: "Python Data Analysis Project",
@@ -25,32 +24,11 @@ const projects = [
       "Performed exploratory data analysis using Pandas and Matplotlib to identify trends and generate insights.",
     tools: ["Python", "Pandas", "Matplotlib"],
     color: "from-primary/15 to-accent/15",
-    link: "https://onedrive.live.com/?cid=f88d2d80c413f6dd&id=F88D2D80C413F6DD%21s968742fd9a7c4ad9b21f4444d2b65994",
+    link: "https://onedrive.live.com/?cid=f88d2d80c413f6dd&id=F88D2D80C413F6DD%21s968742fd9a7c4ad9b21f4444d2b65994&resid=F88D2D80C413F6DD%21s968742fd9a7c4ad9b21f4444d2b65994&e=48jIZ8",
   },
 ];
 
 const ProjectsSection = () => {
-  const [visible, setVisible] = useState([]);
-  const refs = useRef([]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = refs.current.indexOf(entry.target);
-            setVisible((prev) => [...new Set([...prev, index])]);
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    refs.current.forEach((el) => el && observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section id="projects" className="py-20 px-4 relative">
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-primary/10 rounded-full blur-[100px]" />
@@ -68,43 +46,50 @@ const ProjectsSection = () => {
           {projects.map((project, idx) => (
             <div
               key={project.title}
-              ref={(el) => (refs.current[idx] = el)}
-              className={`glass-card overflow-hidden group transform transition-all duration-500
-              ${
-                visible.includes(idx)
-                  ? "animate-fade-up-scroll opacity-100"
-                  : "opacity-0"
-              }
-              hover:scale-105 hover:-translate-y-2 hover:border-primary/40 hover:shadow-[0_0_25px_rgba(34,197,94,0.3)]`}
-              style={{ animationDelay: `${idx * 0.2}s` }}
+              className="glass-card overflow-hidden group 
+              transition-all duration-500 transform 
+              hover:scale-105 hover:-translate-y-2 
+              hover:border-primary/40 hover:shadow-[0_0_25px_rgba(34,197,94,0.3)]"
+              style={{ animationDelay: `${idx * 0.1}s` }}
             >
-              {/* Top strip */}
+              {/* Top gradient strip */}
               <div className={`h-2 bg-gradient-to-r ${project.color}`} />
 
               <div className="p-6 space-y-4">
-                <h3 className="font-heading font-semibold text-xl group-hover:text-primary transition-colors">
+                <h3 className="font-heading font-semibold text-xl group-hover:text-primary transition-colors duration-300">
                   {project.title}
                 </h3>
 
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   {project.description}
                 </p>
 
                 <div className="flex flex-wrap gap-2">
                   {project.tools.map((tool) => (
-                    <Badge key={tool} variant="outline" className="text-xs">
+                    <Badge
+                      key={tool}
+                      variant="outline"
+                      className="text-xs border-glass-border text-muted-foreground transition-all duration-300 group-hover:border-primary/40"
+                    >
                       {tool}
                     </Badge>
                   ))}
                 </div>
 
+                {/* 🔥 Animated Button */}
                 <a
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm text-primary mt-2 transition-all duration-300 hover:translate-x-1"
+                  className="flex items-center gap-2 text-sm text-primary font-medium mt-2
+                  transition-all duration-300 transform
+                  hover:translate-x-1 hover:text-primary/80"
                 >
-                  View Project <ExternalLink size={14} />
+                  View Project
+                  <ExternalLink
+                    size={14}
+                    className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                  />
                 </a>
               </div>
             </div>
