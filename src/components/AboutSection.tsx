@@ -28,9 +28,9 @@ const AboutSection = () => {
             <h3 className="font-heading font-semibold text-lg text-foreground">Contact Info</h3>
             <div className="space-y-4">
               {[
-                { icon: Mail, label: "Email", value: "faisalansari.data@gmail.com", href: "mailto:faisal.alam1588@gmail.com" },
-                { icon: Phone, label: "Phone", value: "+91 93242 30,565", href: "tel:+91 9920118935" },
-                { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/faisal-ansari", href: "https://www.linkedin.com/in/faisal-ansari01/" },
+                { icon: Mail, label: "Email", value: "faisal.alam1588@gmail.com", href: "mailto:faisal.alam1588@gmail.com" },
+                { icon: Phone, label: "Phone", value: "+91 9920118935", href: "tel:+91 9920118935" },
+                { icon: Linkedin, label: "LinkedIn", value: "https://www.linkedin.com/in/faisal-ansari01/", href: "https://www.linkedin.com/in/faisal-ansari01/" },
                 { icon: MapPin, label: "Location", value: "Mumbai, India" },
               ].map((item) => (
                 <div key={item.label} className="flex items-center gap-4">
