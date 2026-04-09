@@ -61,8 +61,8 @@ const ContactSection = () => {
 
           <div className="space-y-6 flex flex-col justify-center">
             {[
-              { icon: Mail, label: "faisalansari.data@gmail.com", href: "mailto:faisalansari.data@gmail.com" },
-              { icon: Linkedin, label: "LinkedIn Profile", href: "https://linkedin.com/in/faisal-ansari" },
+              { icon: Mail, label: "faisal.alam1588@gmail.com", href: "mailto:faisal.alam1588@gmail.com" },
+              { icon: Linkedin, label: "LinkedIn Profile", href: "https://www.linkedin.com/in/faisal-ansari01/" },
               { icon: MapPin, label: "Mumbai, India" },
             ].map((item) => (
               <div key={item.label} className="glass-card p-5 flex items-center gap-4">
