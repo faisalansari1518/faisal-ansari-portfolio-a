@@ -1,118 +1,108 @@
-import { useEffect, useRef, useState } from "react";
-import { ExternalLink } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
 
-const projects = [
-  {
-    title: "Car Sales Dashboard",
-    description:
-      "Built an interactive Power BI dashboard tracking car sales KPIs including YTD/MTD sales, average price analysis, and regional performance.",
-    tools: ["Power BI", "DAX", "Data Modeling"],
-    color: "from-primary/20 to-accent/10",
-    link: "https://app.powerbi.com/links/ZrkTyN1ygF?ctid=6702d84a-f50b-4bc5-a5ed-1cb1ee69a70f&pbi_source=linkShare&bookmarkGuid=3318f696-b61c-4a52-87aa-57a5822006a7",
-  },
-  {
-    title: "Hospital Emergency Room Data",
-    description:
-      "Analyzed hospital ER data using Excel and SQL to create pivot reports on patient wait times and department utilization.",
-    tools: ["Excel", "SQL", "Pivot Tables"],
-    color: "from-accent/20 to-primary/10",
-    link: "https://onedrive.live.com/:x:/g/personal/f88d2d80c413f6dd/IQD1I-gq5kkYTrjHDQI6hRjtAU-ieiqRep5TWensJZ7AxwU",
-  },
-  {
-    title: "Python Data Analysis Project",
-    description:
-      "Performed exploratory data analysis using Pandas and Matplotlib to identify trends and generate insights.",
-    tools: ["Python", "Pandas", "Matplotlib"],
-    color: "from-primary/15 to-accent/15",
-    link: "https://onedrive.live.com/?cid=f88d2d80c413f6dd&id=F88D2D80C413F6DD%21s968742fd9a7c4ad9b21f4444d2b65994",
-  },
-];
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-const ProjectsSection = () => {
-  const [visible, setVisible] = useState([]);
-  const refs = useRef([]);
+/* ================= BASE ================= */
+@layer base {
+  :root {
+    --background: 180 25% 8%;
+    --foreground: 160 20% 90%;
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = refs.current.indexOf(entry.target);
-            setVisible((prev) => [...new Set([...prev, index])]);
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
+    --card: 180 20% 12%;
+    --card-foreground: 160 20% 90%;
 
-    refs.current.forEach((el) => el && observer.observe(el));
+    --popover: 180 20% 12%;
+    --popover-foreground: 160 20% 90%;
 
-    return () => observer.disconnect();
-  }, []);
+    --primary: 150 80% 50%;
+    --primary-foreground: 180 25% 8%;
 
-  return (
-    <section id="projects" className="py-20 px-4 relative">
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-primary/10 rounded-full blur-[100px]" />
+    --secondary: 270 60% 60%;
+    --secondary-foreground: 0 0% 100%;
 
-      <div className="max-w-6xl mx-auto relative z-10">
-        <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-4">
-          Featured <span className="gradient-text">Projects</span>
-        </h2>
+    --muted: 180 15% 16%;
+    --muted-foreground: 160 10% 55%;
 
-        <p className="text-muted-foreground text-center max-w-xl mx-auto mb-12">
-          Real-world data projects showcasing analytical and visualization expertise.
-        </p>
+    --accent: 270 60% 60%;
+    --accent-foreground: 0 0% 100%;
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, idx) => (
-            <div
-              key={project.title}
-              ref={(el) => (refs.current[idx] = el)}
-              className={`glass-card overflow-hidden group transform transition-all duration-500
-              ${
-                visible.includes(idx)
-                  ? "animate-fade-up-scroll opacity-100"
-                  : "opacity-0"
-              }
-              hover:scale-105 hover:-translate-y-2 hover:border-primary/40 hover:shadow-[0_0_25px_rgba(34,197,94,0.3)]`}
-              style={{ animationDelay: `${idx * 0.2}s` }}
-            >
-              {/* Top strip */}
-              <div className={`h-2 bg-gradient-to-r ${project.color}`} />
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-              <div className="p-6 space-y-4">
-                <h3 className="font-heading font-semibold text-xl group-hover:text-primary transition-colors">
-                  {project.title}
-                </h3>
+    --border: 180 15% 18%;
+    --input: 180 15% 18%;
+    --ring: 150 80% 50%;
 
-                <p className="text-sm text-muted-foreground">
-                  {project.description}
-                </p>
+    --radius: 0.75rem;
 
-                <div className="flex flex-wrap gap-2">
-                  {project.tools.map((tool) => (
-                    <Badge key={tool} variant="outline" className="text-xs">
-                      {tool}
-                    </Badge>
-                  ))}
-                </div>
+    --glass: 180 20% 14%;
+    --glass-border: 180 20% 22%;
+    --neon-green: 150 80% 50%;
+    --neon-purple: 270 60% 60%;
+    --teal-dark: 180 30% 6%;
+    --teal-mid: 180 25% 12%;
+  }
 
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm text-primary mt-2 transition-all duration-300 hover:translate-x-1"
-                >
-                  View Project <ExternalLink size={14} />
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
+  * {
+    @apply border-border;
+  }
 
-export default ProjectsSection;
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ================= UTILITIES ================= */
+@layer utilities {
+  .glass-card {
+    @apply bg-card/60 backdrop-blur-xl border border-glass-border rounded-xl;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+  }
+
+  .neon-glow {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3), 0 0 60px hsl(var(--primary) / 0.1);
+  }
+
+  .purple-glow {
+    box-shadow: 0 0 20px hsl(var(--accent) / 0.3), 0 0 60px hsl(var(--accent) / 0.1);
+  }
+
+  .grid-bg {
+    background-image: 
+      linear-gradient(hsl(var(--border) / 0.3) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.3) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+}
+
+/* ================= ANIMATIONS ================= */
+
+/* 🔥 Scroll Fade-Up Animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up-scroll {
+  animation: fadeUp 0.6s ease forwards;
+}
