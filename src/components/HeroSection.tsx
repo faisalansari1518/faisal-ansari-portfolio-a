@@ -2,7 +2,10 @@ import { ArrowDown, Download } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section
+      id="hero"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
       {/* Grid background */}
       <div className="absolute inset-0 grid-bg opacity-40" />
 
@@ -32,10 +35,11 @@ const HeroSection = () => {
           className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto mb-10 animate-fade-up"
           style={{ animationDelay: "0.3s" }}
         >
-          Transforming raw data into actionable insights through powerful visualizations, dashboards, and analytical solutions.
+          Transforming raw data into actionable insights through powerful
+          visualizations, dashboards, and analytical solutions.
         </p>
 
-        {/* 🔥 BUTTONS WITH ANIMATION */}
+        {/* Buttons */}
         <div
           className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up"
           style={{ animationDelay: "0.4s" }}
@@ -53,8 +57,9 @@ const HeroSection = () => {
 
           {/* Download Resume */}
           <a
-            href="/resume.pdf"
-            download
+            href="https://1drv.ms/b/c/f88d2d80c413f6dd/IQDkWVK6JbKnSbhqdF95zZrVARSheApyxziFsbuFM7pXHeU?e=pqQjiL"
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-8 py-3 rounded-lg border border-glass-border text-foreground font-semibold
             transition-all duration-300 transform hover:scale-110 hover:-translate-y-1
             hover:border-primary/50 hover:text-primary
@@ -66,11 +71,11 @@ const HeroSection = () => {
           </a>
         </div>
 
-        {/* 🔽 Arrow Animation */}
+        {/* Arrow */}
         <a
           href="#about"
           className="inline-block mt-16 text-muted-foreground hover:text-primary transition-colors
-          animate-bounce hover:scale-125 duration-300"
+          animate-fade-in-up"
         >
           <ArrowDown size={24} />
         </a>
