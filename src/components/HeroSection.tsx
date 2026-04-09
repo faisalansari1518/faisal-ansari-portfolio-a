@@ -35,30 +35,42 @@ const HeroSection = () => {
           Transforming raw data into actionable insights through powerful visualizations, dashboards, and analytical solutions.
         </p>
 
+        {/* 🔥 BUTTONS WITH ANIMATION */}
         <div
           className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up"
           style={{ animationDelay: "0.4s" }}
         >
+          {/* View Projects */}
           <a
             href="#projects"
-            className="px-8 py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-all neon-glow"
+            className="px-8 py-3 rounded-lg bg-primary text-primary-foreground font-semibold
+            transition-all duration-300 transform hover:scale-110 hover:-translate-y-1
+            hover:bg-primary/90 hover:shadow-[0_0_25px_rgba(34,197,94,0.6)]
+            active:scale-95"
           >
             View Projects
           </a>
 
+          {/* Download Resume */}
           <a
-            href="#contact"
-            className="px-8 py-3 rounded-lg border border-glass-border text-foreground font-semibold hover:border-primary/50 hover:text-primary transition-all flex items-center gap-2"
+            href="/resume.pdf"
+            download
+            className="px-8 py-3 rounded-lg border border-glass-border text-foreground font-semibold
+            transition-all duration-300 transform hover:scale-110 hover:-translate-y-1
+            hover:border-primary/50 hover:text-primary
+            hover:shadow-[0_0_20px_rgba(34,197,94,0.4)]
+            active:scale-95 flex items-center gap-2"
           >
             <Download size={18} />
             Download Resume
           </a>
         </div>
 
-        {/* ✅ UPDATED ARROW (Fade Animation) */}
+        {/* 🔽 Arrow Animation */}
         <a
           href="#about"
-          className="inline-block mt-16 text-muted-foreground hover:text-primary transition-all duration-300 animate-fade-loop"
+          className="inline-block mt-16 text-muted-foreground hover:text-primary transition-colors
+          animate-bounce hover:scale-125 duration-300"
         >
           <ArrowDown size={24} />
         </a>
