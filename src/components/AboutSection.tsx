@@ -31,7 +31,7 @@ const AboutSection = () => {
                 { icon: Mail, label: "Email", value: "faisal.alam1588@gmail.com", href: "mailto:faisal.alam1588@gmail.com" },
                 { icon: Phone, label: "Phone", value: "+91 9920118935", href: "tel:+91 9920118935" },
                 { icon: Linkedin, label: "LinkedIn", value: "https://www.linkedin.com/in/faisal-ansari01/", href: "https://www.linkedin.com/in/faisal-ansari01/" },
-                { icon: MapPin, label: "Location", value: "Mumbai, India" },
+                { icon: MapPin, label: "Location", value: "Navi Mumbai, India" },
               ].map((item) => (
                 <div key={item.label} className="flex items-center gap-4">
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
