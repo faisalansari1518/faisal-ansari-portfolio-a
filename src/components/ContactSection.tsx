@@ -3,27 +3,39 @@ import { Send, Mail, Linkedin, MapPin } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import emailjs from "@emailjs/browser";
 
 const ContactSection = () => {
   const { toast } = useToast();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
 
-    const subject = `Message from ${form.name}`;
-    const body = `Name: ${form.name}\nEmail: ${form.email}\nMessage: ${form.message}`;
+    // Replace these with your EmailJS values
+    const SERVICE_ID = "YOUR_SERVICE_ID";
+    const TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+    const USER_ID = "YOUR_PUBLIC_KEY";
 
-    window.location.href = `mailto:faisal.alam1588@gmail.com?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
-
-    toast({
-      title: "Redirecting to email...",
-      description: "Please send the message from your email app.",
-    });
-
-    setForm({ name: "", email: "", message: "" });
+    emailjs
+      .send(SERVICE_ID, TEMPLATE_ID, form, USER_ID)
+      .then(() => {
+        toast({
+          title: "Message sent successfully!",
+          description: "Thanks for reaching out. I will get back to you soon.",
+        });
+        setForm({ name: "", email: "", message: "" });
+      })
+      .catch((err) => {
+        console.error(err);
+        toast({
+          title: "Failed to send message",
+          description: "Please try again later.",
+        });
+      })
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -40,7 +52,6 @@ const ContactSection = () => {
         </p>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          
           {/* FORM */}
           <form onSubmit={handleSubmit} className="glass-card p-8 space-y-5">
             <Input
@@ -71,10 +82,11 @@ const ContactSection = () => {
 
             <button
               type="submit"
+              disabled={loading}
               className="w-full py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-all neon-glow flex items-center justify-center gap-2"
             >
               <Send size={16} />
-              Send Message
+              {loading ? "Sending..." : "Send Message"}
             </button>
           </form>
 
@@ -97,12 +109,10 @@ const ContactSection = () => {
                 key={item.label}
                 className="glass-card p-5 flex items-center gap-4 group hover:scale-[1.03] transition-all duration-300"
               >
-                {/* ICON */}
                 <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/20 group-hover:shadow-[0_0_20px_rgba(0,255,150,0.4)]">
                   <item.icon size={20} className="text-primary" />
                 </div>
 
-                {/* TEXT */}
                 {item.href ? (
                   <a
                     href={item.href}
@@ -118,7 +128,6 @@ const ContactSection = () => {
               </div>
             ))}
           </div>
-
         </div>
       </div>
     </section>
