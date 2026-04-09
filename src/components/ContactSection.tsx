@@ -14,7 +14,6 @@ const ContactSection = () => {
     const subject = `Message from ${form.name}`;
     const body = `Name: ${form.name}\nEmail: ${form.email}\nMessage: ${form.message}`;
 
-    // ✅ Opens user's email app (Gmail/Outlook)
     window.location.href = `mailto:faisal.alam1588@gmail.com?subject=${encodeURIComponent(
       subject
     )}&body=${encodeURIComponent(body)}`;
@@ -96,12 +95,14 @@ const ContactSection = () => {
             ].map((item) => (
               <div
                 key={item.label}
-                className="glass-card p-5 flex items-center gap-4"
+                className="glass-card p-5 flex items-center gap-4 group hover:scale-[1.03] transition-all duration-300"
               >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                {/* ICON */}
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/20 group-hover:shadow-[0_0_20px_rgba(0,255,150,0.4)]">
                   <item.icon size={20} className="text-primary" />
                 </div>
 
+                {/* TEXT */}
                 {item.href ? (
                   <a
                     href={item.href}
@@ -117,6 +118,7 @@ const ContactSection = () => {
               </div>
             ))}
           </div>
+
         </div>
       </div>
     </section>
