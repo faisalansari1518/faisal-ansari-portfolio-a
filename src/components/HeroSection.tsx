@@ -17,7 +17,6 @@ const HeroSection = () => {
       />
 
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        {/* Role */}
         <p
           className="text-primary font-medium text-sm md:text-base tracking-widest uppercase mb-4 animate-fade-up"
           style={{ animationDelay: "0.1s" }}
@@ -25,7 +24,6 @@ const HeroSection = () => {
           Data Analyst
         </p>
 
-        {/* Name */}
         <h1
           className="font-heading font-extrabold text-4xl sm:text-5xl md:text-7xl leading-tight mb-6 animate-fade-up"
           style={{ animationDelay: "0.2s" }}
@@ -33,7 +31,6 @@ const HeroSection = () => {
           Hi, I'm <span className="gradient-text">Faisal Ansari</span>
         </h1>
 
-        {/* Description */}
         <p
           className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto mb-10 animate-fade-up"
           style={{ animationDelay: "0.3s" }}
@@ -58,10 +55,11 @@ const HeroSection = () => {
             View Projects
           </a>
 
-          {/* Download Resume (LOCAL FILE METHOD) */}
+          {/* Download Resume */}
           <a
-            href="/resume.pdf"
-            download
+            href="https://onedrive.live.com/?viewid=2f04bf88%2Da426%2D45b2%2D8282%2D9ac57db5519f&id=%2Fpersonal%2Ff88d2d80c413f6dd%2FDocuments%2FFaisal%20C%2EV%2Epdf&parent=%2Fpersonal%2Ff88d2d80c413f6dd%2FDocuments"
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-8 py-3 rounded-lg border border-glass-border text-foreground font-semibold
             transition-all duration-300 transform hover:scale-110 hover:-translate-y-1
             hover:border-primary/50 hover:text-primary
@@ -73,7 +71,7 @@ const HeroSection = () => {
           </a>
         </div>
 
-        {/* Scroll Arrow */}
+        {/* Arrow */}
         <a
           href="#about"
           className="inline-block mt-16 text-muted-foreground hover:text-primary transition-colors
