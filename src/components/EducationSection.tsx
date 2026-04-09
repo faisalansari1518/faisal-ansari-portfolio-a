@@ -3,7 +3,7 @@ import { GraduationCap, Award } from "lucide-react";
 const education = [
   {
     period: "2024 – Present",
-    title: "B.Com (Bachelor of Commerce)",
+    title: "Bachelor of Commerce",
     institution: "Mumbai University",
     details: "2nd Year • Focus on ML & AI/Data Science",
   },
