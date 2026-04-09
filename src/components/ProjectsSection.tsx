@@ -43,15 +43,20 @@ const ProjectsSection = () => {
         </p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project) => (
+          {projects.map((project, idx) => (
             <div
               key={project.title}
-              className="glass-card overflow-hidden group hover:border-primary/40 transition-all duration-300"
+              className="glass-card overflow-hidden group 
+              transition-all duration-500 transform 
+              hover:scale-105 hover:-translate-y-2 
+              hover:border-primary/40 hover:shadow-[0_0_25px_rgba(34,197,94,0.3)]"
+              style={{ animationDelay: `${idx * 0.1}s` }}
             >
+              {/* Top gradient strip */}
               <div className={`h-2 bg-gradient-to-r ${project.color}`} />
 
               <div className="p-6 space-y-4">
-                <h3 className="font-heading font-semibold text-xl group-hover:text-primary transition-colors">
+                <h3 className="font-heading font-semibold text-xl group-hover:text-primary transition-colors duration-300">
                   {project.title}
                 </h3>
 
@@ -64,21 +69,27 @@ const ProjectsSection = () => {
                     <Badge
                       key={tool}
                       variant="outline"
-                      className="text-xs border-glass-border text-muted-foreground"
+                      className="text-xs border-glass-border text-muted-foreground transition-all duration-300 group-hover:border-primary/40"
                     >
                       {tool}
                     </Badge>
                   ))}
                 </div>
 
-                {/* ✅ UPDATED LINK BUTTON */}
+                {/* 🔥 Animated Button */}
                 <a
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors mt-2 font-medium"
+                  className="flex items-center gap-2 text-sm text-primary font-medium mt-2
+                  transition-all duration-300 transform
+                  hover:translate-x-1 hover:text-primary/80"
                 >
-                  View Project <ExternalLink size={14} />
+                  View Project
+                  <ExternalLink
+                    size={14}
+                    className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                  />
                 </a>
               </div>
             </div>
