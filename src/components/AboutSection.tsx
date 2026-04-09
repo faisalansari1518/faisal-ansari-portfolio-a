@@ -14,13 +14,13 @@ const AboutSection = () => {
         <div className="grid md:grid-cols-2 gap-8">
           <div className="glass-card p-8 space-y-4">
             <p className="text-foreground/90 leading-relaxed">
-              I'm a <span className="text-primary font-semibold">Data Analyst</span> and B.Com student at Mumbai University with a deep passion for data visualization, dashboard development, and uncovering business insights.
+              I'm a <span className="text-primary font-semibold">Data Analyst</span>  with a deep passion for data visualization, dashboard development, and uncovering business insights.
             </p>
             <p className="text-foreground/90 leading-relaxed">
               With hands-on experience in <span className="text-primary">Excel</span>, <span className="text-primary">SQL</span>, <span className="text-primary">Power BI</span>, and <span className="text-primary">Python</span>, I specialize in creating interactive dashboards, performing data cleaning & transformation, and delivering actionable reports that drive decision-making.
             </p>
             <p className="text-foreground/90 leading-relaxed">
-              Currently in my 2nd year of B.Com, I'm actively exploring Machine Learning and AI/Data Science to expand my analytical toolkit.
+              Currently, I'm actively exploring Machine Learning and AI/Data Science to expand my analytical toolkit.
             </p>
           </div>
 
@@ -28,9 +28,9 @@ const AboutSection = () => {
             <h3 className="font-heading font-semibold text-lg text-foreground">Contact Info</h3>
             <div className="space-y-4">
               {[
-                { icon: Mail, label: "Email", value: "faisalansari.data@gmail.com", href: "mailto:faisalansari.data@gmail.com" },
-                { icon: Phone, label: "Phone", value: "+91 93242 30,565", href: "tel:+919324230565" },
-                { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/faisal-ansari", href: "https://linkedin.com/in/faisal-ansari" },
+                { icon: Mail, label: "Email", value: "faisalansari.data@gmail.com", href: "mailto:faisal.alam1588@gmail.com" },
+                { icon: Phone, label: "Phone", value: "+91 93242 30,565", href: "tel:+91 9920118935" },
+                { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/faisal-ansari", href: "https://www.linkedin.com/in/faisal-ansari01/" },
                 { icon: MapPin, label: "Location", value: "Mumbai, India" },
               ].map((item) => (
                 <div key={item.label} className="flex items-center gap-4">
