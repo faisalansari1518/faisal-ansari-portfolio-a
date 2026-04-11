@@ -51,13 +51,23 @@ const SkillsSection = () => {
           {skills.map((skill, idx) => (
             <div
               key={skill.name}
-              className="glass-card p-6 group transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 hover:shadow-2xl hover:border-primary/40 hover:neon-glow cursor-pointer"
+              className="glass-card p-6 group cursor-pointer
+              transition-all duration-300 transform
+              hover:scale-105 hover:-translate-y-2
+              hover:shadow-2xl hover:border-primary/40 hover:neon-glow"
               style={{ animationDelay: `${idx * 0.1}s` }}
             >
-              {/* ICON */}
+              {/* ICON + TITLE */}
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center transition-all duration-300 group-hover:bg-primary/20 group-hover:scale-110">
-                  <skill.icon size={24} className="text-primary transition-transform duration-300 group-hover:rotate-6" />
+                <div
+                  className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center
+                  transition-all duration-300
+                  group-hover:bg-primary/20 group-hover:scale-110"
+                >
+                  <skill.icon
+                    size={24}
+                    className="text-primary transition-transform duration-300 group-hover:rotate-6"
+                  />
                 </div>
 
                 <h3 className="font-heading font-semibold text-lg group-hover:text-primary transition-colors">
@@ -70,10 +80,13 @@ const SkillsSection = () => {
                 {skill.details}
               </p>
 
-              {/* PROGRESS BAR */}
+              {/* 🔥 ANIMATED PROGRESS BAR */}
               <div className="w-full h-1.5 rounded-full bg-muted overflow-hidden">
                 <div
-                  className="h-full rounded-full bg-gradient-to-r from-primary to-accent transition-all duration-1000 group-hover:brightness-125"
+                  className="h-full rounded-full bg-gradient-to-r from-primary to-accent
+                  transform scale-x-0 origin-left
+                  transition-transform duration-1000 ease-out
+                  group-hover:scale-x-100"
                   style={{ width: `${skill.level}%` }}
                 />
               </div>
