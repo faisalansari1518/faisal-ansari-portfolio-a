@@ -11,13 +11,13 @@ const education = [
     period: "2024",
     title: "12th Science",
     institution: "Radcliffe School",
-    details: "Completed Higher Secondary Education",
+    details: "Completed",
   },
   {
     period: "2022",
     title: "10th",
     institution: "Radcliffe School",
-    details: "Completed Secondary School Certificate",
+    details: "Completed",
   },
 ];
 
